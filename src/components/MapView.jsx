@@ -97,8 +97,8 @@ const MapView = ({ category = "Alle" }) => {
         console.log("Daten von Netlify Function:", json);
 
         const parsed = json.data.map((entry, index) => {
-          const latStr = entry.latitude?.replace(',', '.');
-          const lonStr = entry.longitude?.replace(',', '.');
+          const latStr = typeof entry.latitude === 'string' ? entry.latitude.replace(',', '.') : entry.latitude;
+          const lonStr = typeof entry.longitude === 'string' ? entry.longitude.replace(',', '.') : entry.longitude;
           const lat = parseFloat(latStr);
           const lon = parseFloat(lonStr);
           
