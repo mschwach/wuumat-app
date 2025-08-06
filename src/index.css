@@ -1,0 +1,65 @@
+/* Datei: src/index.css */
+
+/* Globale Standardschrift und Tailwind-Importe */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0; /* Wird sichtbar, wenn #root nicht 100% ausfüllt */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Verhindert Scrollbalken auf der Body-Ebene */
+  height: 100%; /* Stellt sicher, dass Body 100% der Viewporthöhe hat */
+}
+
+html {
+  height: 100%; /* Stellt sicher, dass HTML 100% der Viewporthöhe hat */
+}
+
+/* #root nimmt nun die gesamte Höhe des Viewports abzüglich des Footers ein */
+#root {
+  height: calc(100vh - 50px); /* WICHTIG: 100% Viewporthöhe abzüglich 50px für den Footer */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex; /* #root wird zum Flex-Container für app-container */
+  flex-direction: column; /* app-container als einziges Kind wird vertikal angeordnet */
+}
+
+/* Regeln für app-container */
+.app-container {
+  position: relative;
+  height: 100%; /* app-container füllt 100% der Höhe von #root aus */
+  width: 100%;
+  display: flex; /* app-container wird zum Flex-Container für Header und MapView */
+  flex-direction: column; /* Header und MapView untereinander */
+  overflow-y: auto; /* Erlaubt Scrollen innerhalb des app-containers, falls Inhalt zu groß */
+  overflow-x: hidden;
+  z-index: 2; /* Höher als Body, aber niedriger als Footer */
+}
+
+/* Regeln für den Header innerhalb von app-container */
+.app-container header {
+  flex-shrink: 0; /* Header soll NICHT schrumpfen, seine volle Höhe beibehalten */
+  z-index: 3; /* Soll über der Karte liegen */
+  /* Wenn der Header eine feste Max-Höhe haben soll, hier setzen, z.B. max-height: 200px; */
+}
+
+/* Regeln für MapView, damit sie den restlichen Platz im app-container einnimmt */
+.map-view-container {
+    flex-grow: 1; /* Lässt die Karte den gesamten verfügbaren vertikalen Raum im app-container einnehmen */
+    min-height: 0; /* Wichtig in Flexbox, damit Inhalt nicht überläuft */
+    width: 100%;
+    z-index: 1; /* Soll unter dem Header liegen */
+}
+
+/* Regeln für das Leaflet-Karten-Element */
+.leaflet-container {
+  height: 100%; /* Karte füllt den map-view-container aus */
+  width: 100%;
+}

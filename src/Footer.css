@@ -1,0 +1,160 @@
+/* Datei: src/Footer.css */
+
+/* Stil für den "Nach oben scrollen" Button unten links */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 1rem;
+  left: 0.75rem;
+  background-color: #FFF;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top-button:hover {
+  background-color: #d1ecc4;
+}
+
+/* Stil für das halbtransparente Overlay */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+/* Stil für den Popup-Inhalt */
+.lightbox-content {
+    position: relative;
+    background-color: white;
+    color: black;
+    max-width: 42rem;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin-top: 5vh;
+    animation: slideInFromTop 0.3s ease-out forwards;
+}
+
+/* Stil für den Schließen-Button */
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #555;
+    line-height: 1;
+}
+
+/* Keyframes für die Einflug-Animation von oben */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Stil für den Haupt-Menü-Button-Container */
+.footer-menu-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #E3FCDF;
+  border: 1px solid #000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10000;
+}
+
+/* Stil für das Hamburger-Icon */
+.menu-icon {
+  width: 1.5rem;
+  height: 2px;
+  background-color: #000;
+  position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: '';
+  position: absolute;
+  width: 1.5rem;
+  height: 2px;
+  background-color: #000;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+  transform: translateY(-8px);
+}
+
+.menu-icon::after {
+  transform: translateY(8px);
+}
+
+/* Stil für das Menü-Dropdown */
+.footer-menu {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  max-width: 250px;
+  min-width: 200px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Stil für die einzelnen Menü-Punkte */
+.footer-menu-item {
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.footer-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Entfernt den unteren Border beim letzten Element */
+.footer-menu-item:last-child {
+  border-bottom: none;
+}
